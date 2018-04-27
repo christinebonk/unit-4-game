@@ -27,7 +27,6 @@ for (var i=0; i<availableCharacters.length; i++) {
 	fighterImage.attr("src", availableCharacters[i].gameImage);
 	fighterImage.data("player", availableCharacters[i]);
 	$("#waiting-area").append(fighterImage);
-	console.log(fighterImage);
 }
 
 //Select a fighter
@@ -35,15 +34,9 @@ $("#waiting-area").on("click", ".character", function() {
 	fighter = ($(this).data("player"));
 	fighter.isFighter = true;
 	fighterImage.appendTo("#fighting-area");
+	console.log(availableCharacters);
 	 //move enemies to enemy area
-	for(i=0;i<availableCharacters.length;i++) {
-		if(availableCharacters[i].isFighter === false) {
-			console.log("hi")
-		} else {
-			console.log("hello");
-			console.log(availableCharacters[i]);
-		}
-	}
+	 $("#waiting-area").appendTo("#enemy-area");
 
 });
 
