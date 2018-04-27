@@ -1,0 +1,16 @@
+.character {
+	height: 100px;
+	width: 100px;
+	background: black;
+	color: white;
+}
+
+#fighting-area {
+	height: 100px;
+	background: red;
+}
+
+#enemy-area {
+	height: 100px;
+	background: blue;
+}
