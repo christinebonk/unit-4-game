@@ -31,24 +31,19 @@ for (var i=0; i<availableCharacters.length; i++) {
 }
 
 //Select a fighter
-	$("#waiting-area").on("click", ".character", function() {
-		var fighter = ($(this).data("player"));
-		fighter.isFighter = true;
-
-		//move fighter to fighting area
-		 if (availableCharacters.isFighter = true) {
-		 	fighterImage.appendTo("#fighting-area");
-		 }
-
-		 //move enemies to enemy area
-		 for(var i=0;i<availableCharacters.length;i++) {
-		 	if(availableCharacters.isFighter = false) {
-		 		var enemy = ($(this).data("player"));
-		 		console.log(this)
-		 		fighterImage.appendTo("#enemy-area");
-		 	}
-		 }
-
+$("#waiting-area").on("click", ".character", function() {
+	fighter = ($(this).data("player"));
+	fighter.isFighter = true;
+	fighterImage.appendTo("#fighting-area");
+	 //move enemies to enemy area
+	for(i=0;i<availableCharacters.length;i++) {
+		if(availableCharacters[i].isFighter === false) {
+			console.log("hi")
+		} else {
+			console.log("hello");
+			console.log(availableCharacters[i]);
+		}
+	}
 
 });
 
