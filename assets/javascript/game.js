@@ -25,56 +25,28 @@ for (var i=0; i<availableCharacters.length; i++) {
 	var fighterImage = $("<img>");
 	fighterImage.addClass("character");
 	fighterImage.attr("src", availableCharacters[i].gameImage);
-	fighterImage.data("player", availableCharacters[i]);
+	fighterImage.data("data-player", availableCharacters[i]);
 	$("#waiting-area").append(fighterImage);
 }
 
 //Select a fighter
 $("#waiting-area").on("click", ".character", function() {
-	fighter = ($(this).data("player"));
+	fighter = ($(this).data("data-player"));
 	fighter.isFighter = true;
-	fighterImage.appendTo("#fighting-area");
-	console.log(availableCharacters);
+	console.log($(this).data("data-player"));
+	var myFighterImage = $(this);
+	myFighterImage.appendTo("#fighting-area");
 	 //move enemies to enemy area
 	 $("#waiting-area").appendTo("#enemy-area");
 
 });
 
-
-// var selectCharacter = function() {
-// 		$("#waiting-area").on("click", ".character", function() {
-// 		fighter = lukeSkywalker;
-// 		fighterImage = $("#character1");
-// 		console.log(fighter);
-// 	}).on("click", "#character2", function() {
-// 		fighter = obiWan;
-// 		fighterImage = $("#character2");
-// 		console.log(fighter);
-// 	}).on("click", "#character3", function() {
-// 		fighter = darthVader;
-// 		fighterImage = $("#character3");
-// 		console.log(fighter);
-// 	}).on("click", "#character4", function() {
-// 		fighter = darthMaul;
-// 		console.log(fighter);
-// 		fighterImage = $("#character4");
-// 	}).on("click",".character",function() {
-// 		fighterImage.prependTo("#fighting-area");
-// 	});
-// }
-
-// selectCharacter();
-
-
-
-
-
-
-//Move fighter to fighting area
-
-//Rest of the characters become enemies
-
 //Choose an enemy 
+
+// $("#enemy-area").on("click", ".character", function() {
+// 	console.log(fighterImage);
+// 	fighterImage.appendTo("#other-area");
+// });
 
 //Move enemy to fighting area
 
