@@ -2,6 +2,7 @@
 
 var fighter 
 var myFighterImage
+var width
 
 //Game character object 
 function gameCharacter(name, hP, aP, cA, gImg) {
@@ -48,7 +49,6 @@ $("#waiting-area").on("click", ".character", function() {
 //Choose an enemy 
 $("#enemy-area").on("click", ".character", function() {
 	enemy = ($(this).data("data-player"));
-	console.log(enemy);
 	// set which character image is the fighter
 	myEnemyImage = $(this);
 	//Move enemy to fighting area
@@ -57,6 +57,7 @@ $("#enemy-area").on("click", ".character", function() {
 
 //Player can attack
 $("#attack").on("click", "button", function() {
+	var originalHP = "";
 	//Opponent loses points
 	enemy.healthPoints = enemy.healthPoints - fighter.attackPoints;
 	console.log("HP" + enemy.healthPoints);
@@ -65,7 +66,14 @@ $("#attack").on("click", "button", function() {
 	console.log("AP" + fighter.attackPoints);
 	//Player loses points from counter-attack
 	fighter.healthPoints = fighter.healthPoints - enemy.counterAttack;
-	console.log("CA" + fighter.healthPoints);
+	console.log("My HP" + fighter.healthPoints);
+	//Calculate progress bar
+	width = (((fighter.healthPoints)/originalHP)*100) + "%";
+	console.log("OG" + originalHP)
+	$("#health").css("width",width);
+	console.log("width " + width)
+	// $("#health").
+
 	//Get rid of enemy if defeated
 	if(enemy.healthPoints < 0) {
 		$("#other-area").empty();
