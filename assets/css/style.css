@@ -16,6 +16,12 @@ h2 {
 	font-size: 20px;
 }
 
+h3 {
+	font-size: 20px;
+	font-family: 'Paytone One', sans-serif;
+	padding-bottom: 20px;
+}
+
 p {
 	font-family: sans-serif;
 	color: yellow;
@@ -32,12 +38,24 @@ p:hover {
 	color: white;
 }
 
+.character-box {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+
+}
+
 /*Starting Screen*/
+
 
 
 #waiting-area {
 	padding-top: 20px;
 	display: flex;
+}
+
+#waiting-area div {
+	max-width: 200px;
 }
 
 #waiting-area img {
@@ -180,6 +198,14 @@ button {
 	bottom: 0;
 	width: 100%;
 	background: red;
+}
+
+#player-stats {
+	position: absolute;
+	top: 25px;
+	width: 200px;
+	background: black;
+	color: white;
 }
 
 /*Enemy Waiting Area*/

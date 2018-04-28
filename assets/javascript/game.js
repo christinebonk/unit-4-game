@@ -31,6 +31,8 @@ for (var i=0; i<availableCharacters.length; i++) {
 	var characters = $("<div>");
 	//Add class to div
 	characters.addClass("character-box");
+	//Give div data attribute
+	characters.data("data-player", availableCharacters[i]);
 	//Create new image
 	var fighterImage = $("<img>");
 	//Give image class
@@ -39,15 +41,13 @@ for (var i=0; i<availableCharacters.length; i++) {
 	fighterImage.attr("src", availableCharacters[i].gameImage);
 	//Give image alt text
 	fighterImage.attr("alt", "game character" + [i]);
-	//Give image data attribute
-	fighterImage.data("data-player", availableCharacters[i]);
 	//Append fighter image to div
 	characters.prepend(fighterImage);
 	//Generated character health
 	var characterHealth = $("<p>");
-	characterHealth.text(availableCharacters[i].healthPoints);
+	characterHealth.text(availableCharacters[i].healthPoints + " HP");
 	//Generate character name
-	var characterName = $("<h2>");
+	var characterName = $("<h3>");
 	characterName.text(availableCharacters[i].name);
 	//Add name and health to div
 	characters.append(characterName);
@@ -57,7 +57,7 @@ for (var i=0; i<availableCharacters.length; i++) {
 }
 
 //Select a fighter
-$("#waiting-area").on("click", ".character", function() {
+$("#waiting-area").on("click", ".character-box", function() {
 	//set which character is the fighter
 	fighter = ($(this).data("data-player"));
 	fighter.isFighter = true;
@@ -65,14 +65,15 @@ $("#waiting-area").on("click", ".character", function() {
 	// set which character image is the fighter
 	myFighterImage = $(this);
 	myFighterImage.appendTo("#fighting-area");
+	//set name of character to player name area
 	 //move enemies to enemy area
-	 $("#waiting-area .character").appendTo("#enemy-area");
+	 $("#waiting-area .character-box").appendTo("#enemy-area");
 	 //remove starting screen
 	 $("#starting-screen").remove();
 });
 
 //Choose an enemy 
-$("#enemy-area").on("click", ".character", function() {
+$("#enemy-area").on("click", ".character-box", function() {
 	//Prevent user from selecting two enemies
 	if($("#enemy-fighting-area").is(":empty")) {
 		enemy = ($(this).data("data-player"));
