@@ -1,6 +1,7 @@
 //Define variables
 
 var fighter 
+var myFighterImage
 
 //Game character object 
 function gameCharacter(name, hP, aP, cA, gImg) {
@@ -31,22 +32,22 @@ for (var i=0; i<availableCharacters.length; i++) {
 
 //Select a fighter
 $("#waiting-area").on("click", ".character", function() {
+	//set which character is the fighter
 	fighter = ($(this).data("data-player"));
 	fighter.isFighter = true;
-	console.log($(this).data("data-player"));
-	var myFighterImage = $(this);
+	// set which character image is the fighter
+	myFighterImage = $(this);
 	myFighterImage.appendTo("#fighting-area");
 	 //move enemies to enemy area
-	 $("#waiting-area").appendTo("#enemy-area");
-
+	 $("#waiting-area .character").appendTo("#enemy-area");
 });
 
 //Choose an enemy 
 
-// $("#enemy-area").on("click", ".character", function() {
-// 	console.log(fighterImage);
-// 	fighterImage.appendTo("#other-area");
-// });
+$("#enemy-area").on("click", ".character", function() {
+	console.log(fighterImage);
+	fighterImage.appendTo("#other-area");
+});
 
 //Move enemy to fighting area
 

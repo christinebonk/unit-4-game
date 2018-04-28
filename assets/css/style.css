@@ -5,6 +5,11 @@
 	color: white;
 }
 
+#waiting-area {
+	height: 100px;
+	background: yellow;
+}
+
 #fighting-area {
 	height: 100px;
 	background: red;
@@ -13,4 +18,9 @@
 #enemy-area {
 	height: 100px;
 	background: blue;
+}
+
+#other-area {
+	height: 100px;
+	background: green;
 }
