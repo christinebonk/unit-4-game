@@ -14,18 +14,19 @@ function gameCharacter(name, hP, aP, cA, gImg) {
 }
 
 //Create new characters 
-var lukeSkywalker = new gameCharacter("Luke Skywalker", 100, 6, 6, "https://images.pexels.com/photos/33044/sunflower-sun-summer-yellow.jpg?auto=compress&cs=tinysrgb&h=350", false);
-var obiWan = new gameCharacter("Obi Wan", 120, 10, 10, "https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg", false);
-var darthMaul = new gameCharacter("Darth Maul", 180, 15, 15, "https://media.istockphoto.com/photos/plant-growing-picture-id510222832?k=6&m=510222832&s=612x612&w=0&h=Pzjkj2hf9IZiLAiXcgVE1FbCNFVmKzhdcT98dcHSdSk=");
-var darthVader = new gameCharacter("Darth Vader", 150, 10, 2, "https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg", false);
+var charmander = new gameCharacter("Charmander", 100, 6, 6, "assets/images/charmander.png", false);
+var bellsprout = new gameCharacter("Bellsprout", 120, 10, 10, "assets/images/bellsprout.png", false);
+var bullbasaur = new gameCharacter("Bullbasaur", 180, 15, 15, "assets/images/bullbasaur.png");
+var jigglypuff = new gameCharacter("Jigglypuff", 150, 10, 2, "assets/images/jigglypuff.png", false);
 //Add new characters to array 
-var availableCharacters = [lukeSkywalker, obiWan, darthVader, darthMaul];
+var availableCharacters = [charmander, bellsprout, bullbasaur, jigglypuff];
 
 //Create characters in HTML
 for (var i=0; i<availableCharacters.length; i++) {
 	var fighterImage = $("<img>");
 	fighterImage.addClass("character");
 	fighterImage.attr("src", availableCharacters[i].gameImage);
+	fighterImage.attr("alt", "game character" + [i]);
 	fighterImage.data("data-player", availableCharacters[i]);
 	$("#waiting-area").append(fighterImage);
 }
@@ -63,10 +64,14 @@ $("#attack").on("click", "button", function() {
 	//Player loses points from counter-attack
 	fighter.healthPoints = fighter.healthPoints - enemy.counterAttack;
 	console.log("CA" + fighter.healthPoints);
-	
+	//Get rid of enemy if defeated
 	if(enemy.healthPoints < 0) {
 		$("#other-area").empty();
+	//If attack button is pressed with no enemy, messagse shows to user
+	}if($("#other-area").is(":empty")) {
+		console.log("hi");
 	}
+	
 
 	});
 
@@ -76,13 +81,6 @@ $("#attack").on("click", "button", function() {
 
 	
 	
-
-
-
-
-
-//When enemy's health is below zero, they are defeated
-
 //If attack button is pressed with no enemy, messagse shows to user
 
 //Player can choose new enemy

@@ -1,13 +1,21 @@
+body {
+	margin: 0;
+}
+
 .character {
 	height: 100px;
 	width: 100px;
-	background: black;
 	color: white;
 }
 
-#waiting-area {
-	height: 100px;
+#starting-screen {
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
 	background: yellow;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #fighting-area {
