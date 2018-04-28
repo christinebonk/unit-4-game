@@ -29,6 +29,7 @@ for (var i=0; i<availableCharacters.length; i++) {
 	fighterImage.attr("alt", "game character" + [i]);
 	fighterImage.data("data-player", availableCharacters[i]);
 	$("#waiting-area").append(fighterImage);
+
 }
 
 //Select a fighter
