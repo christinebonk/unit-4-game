@@ -4,9 +4,10 @@ body {
 }
 
 h1 {
-	font-family: 'Press Start 2P', cursive;
-	font-size: 60px;
+	font-family: 'Paytone One', sans-serif;
+	font-size: 90px;
 	padding: 50px;
+	color: white;
 }
 
 h2 {
@@ -24,7 +25,7 @@ h2 {
 /*Starting Screen*/
 
 #waiting-area {
-	padding-top: 200px;
+	padding-top: 20px;
 }
 
 #waiting-area img {
@@ -166,5 +167,11 @@ h2 {
 
 #enemy-area img {
 	margin: 30px;
+	animation: ready 0.3s infinite alternate;
+	animation-play-state: paused;
+}
+
+#enemy-area img:hover {
+	animation-play-state: running;
 }
 

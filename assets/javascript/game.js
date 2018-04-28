@@ -3,6 +3,8 @@
 var fighter 
 var myFighterImage
 var width
+var newHP
+
 
 //Game character object 
 function gameCharacter(name, hP, aP, cA, gImg) {
@@ -37,6 +39,7 @@ $("#waiting-area").on("click", ".character", function() {
 	//set which character is the fighter
 	fighter = ($(this).data("data-player"));
 	fighter.isFighter = true;
+	newHP = fighter.healthPoints;
 	// set which character image is the fighter
 	myFighterImage = $(this);
 	myFighterImage.appendTo("#fighting-area");
@@ -56,20 +59,21 @@ $("#enemy-area").on("click", ".character", function() {
 });
 
 //Player can attack
+
 $("#attack").on("click", "button", function() {
-	var originalHP = "";
+	//Capture fighter's health points
 	//Opponent loses points
 	enemy.healthPoints = enemy.healthPoints - fighter.attackPoints;
-	console.log("HP" + enemy.healthPoints);
+	// console.log("HP" + enemy.healthPoints);
 	//Player gains attack power from attack
 	fighter.attackPoints = fighter.attackPoints + fighter.attackPoints;
-	console.log("AP" + fighter.attackPoints);
+	// console.log("AP" + fighter.attackPoints);
 	//Player loses points from counter-attack
-	fighter.healthPoints = fighter.healthPoints - enemy.counterAttack;
-	console.log("My HP" + fighter.healthPoints);
+	newHP = newHP - enemy.counterAttack;
+	console.log("My HP" + newHP);
 	//Calculate progress bar
-	width = (((fighter.healthPoints)/originalHP)*100) + "%";
-	console.log("OG" + originalHP)
+	width = (((newHP)/fighter.healthPoints)*100) + "%";
+	console.log(fighter.healthPoints);
 	$("#health").css("width",width);
 	console.log("width " + width)
 	// $("#health").
