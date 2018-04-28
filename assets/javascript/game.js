@@ -1,10 +1,11 @@
 //Define variables
 
-var fighter 
-var myFighterImage
-var width
-var newHP
-
+var fighter //fighter object
+var myFighterImage //fighter image
+var width //width of progress bar
+var newHP //HP that changes in battle
+var enemyNewHP ////Enemy HP that changes in battle
+var enemyWidth //width of enemy progress bar
 
 //Game character object 
 function gameCharacter(name, hP, aP, cA, gImg) {
@@ -56,28 +57,26 @@ $("#enemy-area").on("click", ".character", function() {
 	myEnemyImage = $(this);
 	//Move enemy to fighting area
 	myEnemyImage.appendTo("#enemy-fighting-area");
+	enemyNewHP = enemy.healthPoints;
 });
 
 //Player can attack
 
 $("#attack").on("click", "button", function() {
-	//Capture fighter's health points
 	//Opponent loses points
-	enemy.healthPoints = enemy.healthPoints - fighter.attackPoints;
-	// console.log("HP" + enemy.healthPoints);
+	enemyNewHP = enemyNewHP - fighter.attackPoints;
 	//Player gains attack power from attack
 	fighter.attackPoints = fighter.attackPoints + fighter.attackPoints;
-	// console.log("AP" + fighter.attackPoints);
 	//Player loses points from counter-attack
 	newHP = newHP - enemy.counterAttack;
-	console.log("My HP" + newHP);
 	//Calculate progress bar
 	width = (((newHP)/fighter.healthPoints)*100) + "%";
-	console.log(fighter.healthPoints);
+	//Update progress bar
 	$("#health").css("width",width);
-	console.log("width " + width)
-	// $("#health").
-
+	//Calculate enemy progress bar
+	enemyWidth = (((enemyNewHP)/enemy.healthPoints)*100) + "%";
+	//Update enemy progress bar
+	$("#enemy-health").css("width",enemyWidth);
 	//Get rid of enemy if defeated
 	if(enemy.healthPoints < 0) {
 		$("#other-area").empty();

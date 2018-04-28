@@ -141,6 +141,8 @@ h2 {
 		height: 25px;
 		border: 1px solid black;
 		position: fixed;
+		display: flex;
+		justify-content: flex-end;
 		top: 0;
 		right: 0;
 		left: 50%;
