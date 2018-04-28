@@ -36,7 +36,6 @@ h2 {
 	cursor: pointer;
 }
 
-
 #starting-screen {
 	height: 100vh;
 	width: 100vw;
@@ -44,6 +43,7 @@ h2 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	z-index: 2;
 	background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%);
 }
 
@@ -72,20 +72,52 @@ h2 {
 	}
 }
 
+.hide {
+	display: none;
+}
+
 /*End of Starting Screen*/
 
+/*Gameplay Screen*/
+
+#gameplay-screen {
+	height: 100vh;
+	width: 100vw;
+	background: linear-gradient(to bottom, #57c1eb 0%,#246fa8 100%);
+}
+
+/*Arena*/
+
+#arena {
+	display: flex;
+	align-items: flex-end;
+	height: 50%;
+}
+
+#arena div {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+}
 
 #fighting-area {
-	height: 100px;
-	background: red;
 }
+
+#enemy-fighting-area {
+}
+
+/*Enemy Waiting Area*/
 
 #enemy-area {
-	height: 100px;
-	background: blue;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	bottom: 10%;
+	display: flex;
+	justify-content: center;
 }
 
-#other-area {
-	height: 100px;
-	background: green;
+#enemy-area img {
+	margin: 30px;
 }
+

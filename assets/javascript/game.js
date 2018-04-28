@@ -29,7 +29,6 @@ for (var i=0; i<availableCharacters.length; i++) {
 	fighterImage.attr("alt", "game character" + [i]);
 	fighterImage.data("data-player", availableCharacters[i]);
 	$("#waiting-area").append(fighterImage);
-
 }
 
 //Select a fighter
@@ -42,6 +41,8 @@ $("#waiting-area").on("click", ".character", function() {
 	myFighterImage.appendTo("#fighting-area");
 	 //move enemies to enemy area
 	 $("#waiting-area .character").appendTo("#enemy-area");
+	 //remove starting screen
+	 $("#starting-screen").remove();
 });
 
 //Choose an enemy 
@@ -51,7 +52,7 @@ $("#enemy-area").on("click", ".character", function() {
 	// set which character image is the fighter
 	myEnemyImage = $(this);
 	//Move enemy to fighting area
-	myEnemyImage.appendTo("#other-area");
+	myEnemyImage.appendTo("#enemy-fighting-area");
 });
 
 //Player can attack

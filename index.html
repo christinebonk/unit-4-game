@@ -12,19 +12,25 @@
 </head>
 <body>
 	<main>
-		<div id="starting-screen">
-			<section id="waiting-area"></section>
+		<!--Starting Screen-->
+		<section id="starting-screen">
+			<div id="waiting-area"></div>
 			<h2>Select a Character to get Started</h2>
-		</div>
-		<section id="fighting-area">
-		</section>	
-		<section id="enemy-area">
-		</section>	
-		<section id="other-area">
-		</section>	
-		<div id="attack">
-			<button>Attack</button>
-		</div>
+		</section>
+		<section id="gameplay-screen">
+			<!--Arena-->
+			<div id="arena">
+				<div id="fighting-area">
+				</div>	
+				<div id="enemy-fighting-area"></div>	
+			</div>
+			<!--Enemy Fighting Area-->
+			<div id="enemy-area">
+			</div>	
+			<div id="attack">
+				<button>Attack</button>
+			</div>
+		</section>
 	</main>
 	<script src="assets/javascript/game.js"></script>
 </body>
