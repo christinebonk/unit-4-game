@@ -4,22 +4,23 @@ body {
 }
 
 h1 {
-	font-family: 'Paytone One', sans-serif;
+	font-family: 'Bungee', cursive;
 	font-size: 90px;
-	padding: 50px;
+	padding: 40px 0px 20px;
 	color: white;
 }
 
 h2 {
 	font-family: 'Press Start 2P', cursive;
-	padding: 50px;
 	font-size: 20px;
+	padding: 30px;
 }
 
 h3 {
-	font-size: 20px;
-	font-family: 'Paytone One', sans-serif;
-	padding-bottom: 20px;
+	font-size: 15px;
+	font-family: 'Bungee', cursive;
+	padding-bottom: 10px;
+	color: #282828;
 }
 
 p {
@@ -28,9 +29,6 @@ p {
 	text-align: center;
 }
 
-p:hover {
-	color: navy;
-}
 
 .character {
 	height: 100px;
@@ -42,12 +40,17 @@ p:hover {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+	align-items: space-between;
 
 }
 
 /*Starting Screen*/
 
-
+#starting-screen h2 {
+	padding-top: 70px;
+	color: #FF8C00;
+	text-shadow: 1px 1px #282828;
+}
 
 #waiting-area {
 	padding-top: 20px;
@@ -137,31 +140,33 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 50%;
+	height: 40%;
 }
 
 #arena div {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	width: 50%;
+	height: 100%;
 }
 
-#fighter {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	justify-content: flex-end;
-	align-items: flex-end;
+#arena .character-box {
+	margin-top: 50px;
 }
+
+#arena .character-box h3 {
+	padding: 30px;
+}
+
 
 #fighting-area img {
 	transform: scale(1.5);
-	padding: 50px 200px;
 }
 
 #enemy-fighting-area img {
 	transform: scale(1.5);
-	padding: 50px;
-	padding: 50px 200px;
+
 }
 
 .outline {
@@ -200,13 +205,6 @@ button {
 	background: red;
 }
 
-#player-stats {
-	position: absolute;
-	top: 25px;
-	width: 200px;
-	background: black;
-	color: white;
-}
 
 /*Enemy Waiting Area*/
 
