@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<title>Test</title>
+	<style>
+
+
+	.outline {
+		width: 100px;
+		height: 10px;
+		border: 1px solid black;
+		position: relative;
+	}
+
+	.health {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		background: green;
+	}
+
+	img {
+		height: 100px;
+	}
+
+	</style>
+</head>
+<body>
+	<section id="starting-screen">
+		<h1>Pokemon Battle</h1>
+		<div id="waiting-area">
+		</div>
+		<h2>Select a Character to get Started</h2>
+	</section>
+
+
+	<script>
+		//Define variables
+
+var fighter //fighter object
+var myFighterImage //fighter image
+var width //width of progress bar
+var newHP //HP that changes in battle
+var enemyNewHP ////Enemy HP that changes in battle
+var enemyWidth //width of enemy progress bar
+
+//Game character object 
+function gameCharacter(name, hP, aP, cA, gImg) {
+	this.name = name;
+	this.healthPoints = hP;
+	this.attackPoints = aP;
+	this.counterAttack = cA;
+	this.gameImage = gImg; 
+	this.isFighter = false;
+}
+
+//Create new characters 
+var charmander = new gameCharacter("Charmander", 40, 6, 6, "assets/images/charmander.png", false);
+var bellsprout = new gameCharacter("Bellsprout", 120, 10, 10, "assets/images/bellsprout.png", false);
+var bullbasaur = new gameCharacter("Bullbasaur", 180, 15, 15, "assets/images/bullbasaur.png");
+var jigglypuff = new gameCharacter("Jigglypuff", 150, 10, 2, "assets/images/jigglypuff.png", false);
+//Add new characters to array 
+var availableCharacters = [charmander, bellsprout, bullbasaur, jigglypuff];
+
+//Create characters in HTML
+for (var i=0; i<availableCharacters.length; i++) {
+	//Create new div
+	var characters = $("<div>");
+	//Add class to div
+	characters.addClass("character-box");
+	//Create new image
+	var fighterImage = $("<img>");
+	//Give image class
+	fighterImage.addClass("character");
+	//Give image src attribute
+	fighterImage.attr("src", availableCharacters[i].gameImage);
+	//Give image alt text
+	fighterImage.attr("alt", "game character" + [i]);
+	//Give image data attribute
+	fighterImage.data("data-player", availableCharacters[i]);
+	//Append fighter image to div
+	characters.prepend(fighterImage);
+	//Generated character health
+	var characterHealth = $("<p>");
+	characterHealth.text(availableCharacters[i].healthPoints);
+	//Generate character name
+	var characterName = $("<h2>");
+	characterName.text(availableCharacters[i].name);
+	//Add name and health to div
+	characters.append(characterName);
+	characters.append(characterHealth);
+	//Put the divs in the waiting area
+	$("#waiting-area").prepend(characters);
+}
+
+	</script>
+	
+</body>
+</html>

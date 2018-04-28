@@ -16,6 +16,16 @@ h2 {
 	font-size: 20px;
 }
 
+p {
+	font-family: sans-serif;
+	color: yellow;
+	text-align: center;
+}
+
+p:hover {
+	color: navy;
+}
+
 .character {
 	height: 100px;
 	width: 100px;
@@ -24,8 +34,10 @@ h2 {
 
 /*Starting Screen*/
 
+
 #waiting-area {
 	padding-top: 20px;
+	display: flex;
 }
 
 #waiting-area img {
@@ -80,6 +92,20 @@ h2 {
 /*End of Starting Screen*/
 
 /*Gameplay Screen*/
+
+#attack {
+	display: flex;
+	justify-content: center
+
+}
+
+button {
+	background: red;
+	color: white;
+	font-size: 30px;
+	border-radius: 5px;
+
+}
 
 #gameplay-screen {
 	height: 100vh;
@@ -159,10 +185,7 @@ h2 {
 /*Enemy Waiting Area*/
 
 #enemy-area {
-	position: absolute;
 	width: 100%;
-	z-index: 1;
-	bottom: 10%;
 	display: flex;
 	justify-content: center;
 }
@@ -175,5 +198,9 @@ h2 {
 
 #enemy-area img:hover {
 	animation-play-state: running;
+}
+
+#user-message {
+	text-align: center;
 }
 

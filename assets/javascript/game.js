@@ -18,7 +18,7 @@ function gameCharacter(name, hP, aP, cA, gImg) {
 }
 
 //Create new characters 
-var charmander = new gameCharacter("Charmander", 100, 6, 6, "assets/images/charmander.png", false);
+var charmander = new gameCharacter("Charmander", 40, 6, 6, "assets/images/charmander.png", false);
 var bellsprout = new gameCharacter("Bellsprout", 120, 10, 10, "assets/images/bellsprout.png", false);
 var bullbasaur = new gameCharacter("Bullbasaur", 180, 15, 15, "assets/images/bullbasaur.png");
 var jigglypuff = new gameCharacter("Jigglypuff", 150, 10, 2, "assets/images/jigglypuff.png", false);
@@ -27,12 +27,33 @@ var availableCharacters = [charmander, bellsprout, bullbasaur, jigglypuff];
 
 //Create characters in HTML
 for (var i=0; i<availableCharacters.length; i++) {
+	//Create new div
+	var characters = $("<div>");
+	//Add class to div
+	characters.addClass("character-box");
+	//Create new image
 	var fighterImage = $("<img>");
+	//Give image class
 	fighterImage.addClass("character");
+	//Give image src attribute
 	fighterImage.attr("src", availableCharacters[i].gameImage);
+	//Give image alt text
 	fighterImage.attr("alt", "game character" + [i]);
+	//Give image data attribute
 	fighterImage.data("data-player", availableCharacters[i]);
-	$("#waiting-area").append(fighterImage);
+	//Append fighter image to div
+	characters.prepend(fighterImage);
+	//Generated character health
+	var characterHealth = $("<p>");
+	characterHealth.text(availableCharacters[i].healthPoints);
+	//Generate character name
+	var characterName = $("<h2>");
+	characterName.text(availableCharacters[i].name);
+	//Add name and health to div
+	characters.append(characterName);
+	characters.append(characterHealth);
+	//Put the divs in the waiting area
+	$("#waiting-area").prepend(characters);
 }
 
 //Select a fighter
@@ -52,16 +73,21 @@ $("#waiting-area").on("click", ".character", function() {
 
 //Choose an enemy 
 $("#enemy-area").on("click", ".character", function() {
-	enemy = ($(this).data("data-player"));
-	// set which character image is the fighter
-	myEnemyImage = $(this);
-	//Move enemy to fighting area
-	myEnemyImage.appendTo("#enemy-fighting-area");
-	enemyNewHP = enemy.healthPoints;
+	//Prevent user from selecting two enemies
+	if($("#enemy-fighting-area").is(":empty")) {
+		enemy = ($(this).data("data-player"));
+		// set which character image is the fighter
+		myEnemyImage = $(this);
+		//Move enemy to fighting area
+		myEnemyImage.appendTo("#enemy-fighting-area");
+		$("#user-message").text("Start attacking!")
+		enemyNewHP = enemy.healthPoints;
+	} else {
+		$("#user-message").text("You can only fight one enemy at once!")
+	}
 });
 
-//Player can attack
-
+//Player can attack 
 $("#attack").on("click", "button", function() {
 	//Opponent loses points
 	enemyNewHP = enemyNewHP - fighter.attackPoints;
@@ -78,26 +104,27 @@ $("#attack").on("click", "button", function() {
 	//Update enemy progress bar
 	$("#enemy-health").css("width",enemyWidth);
 	//Get rid of enemy if defeated
-	if(enemy.healthPoints < 0) {
-		$("#other-area").empty();
+	if(enemyNewHP <= 0) {
+		$("#enemy-fighting-area").empty();
+		enemy = "";
+		$("#user-message").text("You defeated your enemy!");
 	//If attack button is pressed with no enemy, messagse shows to user
-	}if($("#other-area").is(":empty")) {
-		console.log("hi");
+	}  else if($("#enemy-fighting-area").is(":empty")) {
+		$("#user-message").text("There is no one to attack");
+	} 
+	if (newHP <= 0) {
+	//Player loses if health drops below zero
+		$("#user-message").text("You lose");
+		$("#fighting-area").empty();
 	}
-	
-
-	});
+});
 
 
 
 
 
 	
-	
-//If attack button is pressed with no enemy, messagse shows to user
 
-//Player can choose new enemy
 
-//Player loses if health drops below zero
 
 //Restart game

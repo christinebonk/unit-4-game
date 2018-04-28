@@ -14,43 +14,60 @@
 	<title>Pokebattle</title>
 </head>
 <body>
-	<main>
-		<!--Starting Screen-->
-		<section id="starting-screen">
-			<h1>Pokemon Battle</h1>
-			<div id="waiting-area"></div>
-			<h2>Select a Character to get Started</h2>
-		</section>
-		<section id="gameplay-screen">
-			<!--Player Health-->
-			<figure class="outline">
-				<figure id="health" class="health">
-					
-				</figure>
-			</figure>
-			<!--Enemy Health-->
-			<figure class="enemy-outline">
-				<figure id="enemy-health" class="enemy-health">
-					
-				</figure>
-			</figure>
-			<!--Arena-->
-			<div id="arena">
-				<div id="fighter">
-					<div id="fighting-area"></div>	
-				</div>
-				<div id="enemy">
-					<div id="enemy-fighting-area"></div>	
-				</div>
+
+	<!--Starting Screen-->
+	<section id="starting-screen">
+		<h1>Pokemon Battle</h1>
+		<div id="waiting-area">
+			<div id="waiting-area0">
+				<p id="HP0"></p>
 			</div>
-			<!--Enemy Waiting Area-->
-			<div id="enemy-area">
+			<div id="waiting-area1">
+				<p id="HP1"></p>
+			</div>
+			<div id="waiting-area2">
+				<p id="HP2"></p>
+			</div>
+			<div id="waiting-area3">
+				<p id="HP3"></p>
+			</div>
+		</div>
+		<h2>Select a Character to get Started</h2>
+	</section>
+	<main id="gameplay-screen">
+		<!--Player Health-->
+		<figure class="outline">
+			<figure id="health" class="health">
+				
+			</figure>
+		</figure>
+		<!--Enemy Health-->
+		<figure class="enemy-outline">
+			<figure id="enemy-health" class="enemy-health">
+				
+			</figure>
+		</figure>
+		<!--Arena-->
+		<div id="arena">
+			<div id="fighter">
+				<div id="fighting-area"></div>	
+			</div>
+			<div id="enemy">
+				<div id="enemy-fighting-area"></div>	
+			</div>
+		</div>
+		<!--Enemy Waiting Area-->
+		<div class="screen-bottom">
+			<div id="enemy-area">		
 			</div>	
-			<div id="attack">
-				<button>Attack</button>
-			</div>
-		</section>
+			<h2 id="user-message">Choose an enemy!</h2>
+				
+		</div>
+		<div id="attack">
+			<button>Attack</button>
+		</div>
 	</main>
+
 	<script src="assets/javascript/game.js"></script>
 </body>
 </html>
