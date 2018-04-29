@@ -6,6 +6,7 @@ var width //width of progress bar
 var newHP //HP that changes in battle
 var enemyNewHP ////Enemy HP that changes in battle
 var enemyWidth //width of enemy progress bar
+var newAP //AP that changes in battle
 
 //Game character object 
 function gameCharacter(name, hP, aP, cA, gImg) {
@@ -18,10 +19,10 @@ function gameCharacter(name, hP, aP, cA, gImg) {
 }
 
 //Create new characters 
-var charmander = new gameCharacter("Charmander", 100, 6, 15, "assets/images/charmander.png", false);
-var bellsprout = new gameCharacter("Bellsprout", 120, 2, 30, "assets/images/bellsprout.png", false);
-var bullbasaur = new gameCharacter("Bullbasaur", 180, 4, 25, "assets/images/bullbasaur.png");
-var jigglypuff = new gameCharacter("Jigglypuff", 150, 5, 40, "assets/images/jigglypuff.png", false);
+var charmander = new gameCharacter("Charmander", 100, 15, 10, "assets/images/charmander.png", false);
+var bellsprout = new gameCharacter("Bellsprout", 120, 13, 15, "assets/images/bellsprout.png", false);
+var bullbasaur = new gameCharacter("Bullbasaur", 200, 5, 30, "assets/images/bullbasaur.png");
+var jigglypuff = new gameCharacter("Jigglypuff", 150, 10, 25, "assets/images/jigglypuff.png", false);
 //Add new characters to array 
 var availableCharacters = [charmander, bellsprout, bullbasaur, jigglypuff];
 
@@ -31,7 +32,7 @@ for (var i=0; i<availableCharacters.length; i++) {
 	var characters = $("<div>");
 	//Add class to div
 	characters.addClass("character-box");
-	//Give div data attribute
+	//Give div data attribute of character
 	characters.data("data-player", availableCharacters[i]);
 	//Create new image
 	var fighterImage = $("<img>");
@@ -58,18 +59,26 @@ for (var i=0; i<availableCharacters.length; i++) {
 
 //Select a fighter
 $("#waiting-area").on("click", ".character-box", function() {
-	//set which character is the fighter
+	//set the fighter object from the selected element
 	fighter = ($(this).data("data-player"));
+	//Give the object a value of "isFighter" true
 	fighter.isFighter = true;
+	//Set new HP & AP to change in battle
 	newHP = fighter.healthPoints;
-	// set which character image is the fighter
-	myFighterImage = $(this);
-	myFighterImage.appendTo("#fighting-area");
+	newAP = fighter.attackPoints;
+	// Set which character element is the fighter
+	myFighter = $(this);
+	// Move the character element to the fighting area
+	myFighter.appendTo("#fighting-area");
 	//set name of character to player name area
 	 //move enemies to enemy area
 	 $("#waiting-area .character-box").appendTo("#enemy-area");
 	 //remove starting screen
 	 $("#starting-screen").remove();
+	 //remove health points from character
+	 $("#fighting-area p").remove(":contains('HP')" );
+	 //add health points to progress bar
+	 $("#health").append(fighter.healthPoints + " HP");
 });
 
 //Choose an enemy 
@@ -78,13 +87,17 @@ $("#enemy-area").on("click", ".character-box", function() {
 	if($("#enemy-fighting-area").is(":empty")) {
 		enemy = ($(this).data("data-player"));
 		// set which character image is the fighter
-		myEnemyImage = $(this);
+		myEnemy = $(this);
 		//Move enemy to fighting area
-		myEnemyImage.appendTo("#enemy-fighting-area");
+		myEnemy.appendTo("#enemy-fighting-area");
 		$("#user-message").text("Start attacking!")
 		enemyNewHP = enemy.healthPoints;
 		//Reset health bar to 100%
 		$("#enemy-health").css("width", "100%");
+		//remove health points from character
+	 	$("#enemy-fighting-area p").remove(":contains('HP')" );
+	 	//add health points to progress bar
+	 	$("#enemy-health").append(enemy.healthPoints + " HP");
 	} else {
 		$("#user-message").text("You can only fight one enemy at once!")
 	}
@@ -92,33 +105,44 @@ $("#enemy-area").on("click", ".character-box", function() {
 
 //Player can attack 
 $("#attack").on("click", "button", function() {
-	//Opponent loses points
-	enemyNewHP = enemyNewHP - fighter.attackPoints;
-	//Player gains attack power from attack
-	fighter.attackPoints = fighter.attackPoints + fighter.attackPoints;
-	//Player loses points from counter-attack
-	newHP = newHP - enemy.counterAttack;
-	//Calculate progress bar
-	width = (((newHP)/fighter.healthPoints)*100) + "%";
-	//Update progress bar
-	$("#health").css("width",width);
-	//Calculate enemy progress bar
-	enemyWidth = (((enemyNewHP)/enemy.healthPoints)*100) + "%";
-	//Update enemy progress bar
-	$("#enemy-health").css("width",enemyWidth);
+	//If attack button is pressed with no enemy, messagse shows to user
+	if($("#enemy-fighting-area").is(":empty")) {
+		$("#user-message").text("There is no one to attack");
+	} else {
+		//Opponent loses points
+		enemyNewHP = enemyNewHP - newAP;
+		//Player loses points from counter-attack
+		newHP = newHP - enemy.counterAttack;
+		//Display attack
+		$("#user-message").text(fighter.name + " hit " + enemy.name + " for " + newAP + " damage and " + enemy.name + " hit back with " + enemy.counterAttack + " damage")
+		//Calculate progress bar
+		width = (((newHP)/fighter.healthPoints)*100) + "%";
+		//Update progress bar
+		$("#health").css("width",width);
+		//Updated HP
+		$("#health").text(newHP + " HP");
+		//Calculate enemy progress bar
+		enemyWidth = (((enemyNewHP)/enemy.healthPoints)*100) + "%";
+		//Update enemy progress bar
+		$("#enemy-health").css("width",enemyWidth);
+		//Updated HP
+		$("#enemy-health").text(enemyNewHP + " HP");
+		//Player gains attack power from attack
+		newAP = newAP + fighter.attackPoints;
+	}
 	//Get rid of enemy if defeated
 	if(enemyNewHP <= 0) {
 		$("#enemy-fighting-area").empty();
 		enemy = "";
+		$("#enemy-health").text("");
 		$("#user-message").text("You defeated your enemy!");
-	//If attack button is pressed with no enemy, messagse shows to user
-	}  else if($("#enemy-fighting-area").is(":empty")) {
-		$("#user-message").text("There is no one to attack");
-	} 
-	if (newHP <= 0) {
+	} else if (newHP <= 0) {
 	//Player loses if health drops below zero
 		$("#user-message").text("You lose");
 		$("#fighting-area").empty();
+		$("#health").text("");
+		fighter = "";
+		newAP = "";
 	}
 });
 
