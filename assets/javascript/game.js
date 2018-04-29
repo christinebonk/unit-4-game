@@ -109,9 +109,9 @@ $("#enemy-area").on("click", ".character-box", function() {
 
 //Player attacks
 $("#attack").on("click", "button", function() {
-	//If attack button is pressed with no enemy, messagse shows to user
+	//If attack button is pressed with no enemy, messagse shows to user (for before attack)
 	if($("#enemy-fighting-area").is(":empty")) {
-		$("#user-message").text("There is no one to attack");
+		$("#user-message").text("There is no one here!");
 	} else {
 		//Opponent loses points
 		enemyNewHP = enemyNewHP - newAP;
@@ -166,6 +166,10 @@ $("#attack").on("click", "button", function() {
 		myFighter.appendTo("#character-lose");
 		//show lose screen 
 		$(".lose-screen").addClass("show");
+	}
+	//If attack button is pressed with no enemy, messagse shows to user (for after attack)
+	if($("#enemy-fighting-area").is(":empty")) {
+		$("#user-message").text("There is no one here!");
 	}
 });
 
