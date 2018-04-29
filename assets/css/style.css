@@ -262,3 +262,42 @@ button:hover {
 	text-align: center;
 }
 
+/*Win Screen*/
+
+.win-screen {
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	flex-direction: column;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(to bottom, #94c5f8 1%,#a6e6ff 70%,#b1b5ea 100%);
+}
+
+#character-win {
+	transform: scale(2);
+	padding: 55px;
+}
+
+#character-win img {
+	padding: 20px;
+	animation: dance 1s infinite alternate;
+}
+
+@keyframes dance {
+	0% {
+		transform: rotate(-20deg);
+	} 100% {
+		transform: rotate(20deg);
+	}
+}
+
+.show {
+	display: flex;
+}
+

@@ -146,12 +146,14 @@ $("#attack").on("click", "button", function() {
 		$("#user-message").text("You defeated your enemy!");
 		//check if anymore enemies left
 		if($("#enemy-area").is(":empty")) {
-			console.log("hi")
-			$("#user-message").text("You Win!");
 			//pause starting music
 			 $(".victory-screen").trigger("play");
 			 //start battle music
 			 $(".battle-screen").trigger("pause");
+			 //move fighter to win screen
+			 myFighter.appendTo("#character-win");
+			 //show win screen 
+			 $(".win-screen").addClass("show");
 		} 
 	} 
 	if (newHP <= 0) {
