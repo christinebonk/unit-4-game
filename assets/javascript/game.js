@@ -79,6 +79,10 @@ $("#waiting-area").on("click", ".character-box", function() {
 	 $("#fighting-area p").remove(":contains('HP')" );
 	 //add health points to progress bar
 	 $("#health").append(fighter.healthPoints + " HP");
+	 //pause starting music
+	 $(".starting-screen").trigger("pause");
+	 //start battle music
+	 $(".battle-screen").trigger("play");
 });
 
 //Choose an enemy 
@@ -103,7 +107,7 @@ $("#enemy-area").on("click", ".character-box", function() {
 	}
 });
 
-//Player can attack 
+//Player attacks
 $("#attack").on("click", "button", function() {
 	//If attack button is pressed with no enemy, messagse shows to user
 	if($("#enemy-fighting-area").is(":empty")) {
@@ -132,11 +136,25 @@ $("#attack").on("click", "button", function() {
 	}
 	//Get rid of enemy if defeated
 	if(enemyNewHP <= 0) {
+		//empty fighting area
 		$("#enemy-fighting-area").empty();
+		//reset enemy
 		enemy = "";
+		//reset health
 		$("#enemy-health").text("");
+		//update onscreen message
 		$("#user-message").text("You defeated your enemy!");
-	} else if (newHP <= 0) {
+		//check if anymore enemies left
+		if($("#enemy-area").is(":empty")) {
+			console.log("hi")
+			$("#user-message").text("You Win!");
+			//pause starting music
+			 $(".victory-screen").trigger("play");
+			 //start battle music
+			 $(".battle-screen").trigger("pause");
+		} 
+	} 
+	if (newHP <= 0) {
 	//Player loses if health drops below zero
 		$("#user-message").text("You lose");
 		$("#fighting-area").empty();
@@ -145,13 +163,5 @@ $("#attack").on("click", "button", function() {
 		newAP = "";
 	}
 });
-
-
-
-
-
-	
-
-
 
 //Restart game

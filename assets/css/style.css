@@ -126,7 +126,11 @@ button {
 	color: white;
 	font-size: 30px;
 	border-radius: 5px;
+	transition: 0.3s ease;
+}
 
+button:hover {
+	background: #BD0000;
 }
 
 #gameplay-screen {
