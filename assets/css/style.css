@@ -12,7 +12,7 @@ h1 {
 
 h2 {
 	font-family: 'Press Start 2P', cursive;
-	font-size: 20px;
+	font-size: 25px;
 	padding: 30px;
 }
 
@@ -48,8 +48,8 @@ p {
 
 #starting-screen h2 {
 	padding-top: 70px;
-	color: #FF8C00;
-	text-shadow: 1px 1px #282828;
+	color: #ff9d26;
+	text-shadow: 2px 1px #282828;
 }
 
 #waiting-area {
@@ -81,18 +81,18 @@ p {
 	background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%);
 }
 
-#starting-screen img:nth-child(1) {
+#waiting-area .character-box:nth-child(1) img {
 	animation: ready 2s infinite alternate;
 }
-#starting-screen img:nth-child(2) {
+#waiting-area .character-box:nth-child(2) img {
 	animation: ready 2s infinite alternate;
 	animation-delay: 0.3s;
 }
-#starting-screen img:nth-child(3) {
+#waiting-area .character-box:nth-child(3) img {
 	animation: ready 2s infinite alternate;
 	animation-delay: 0.7s;
 }
-#starting-screen img:nth-child(4) {
+#waiting-area .character-box:nth-child(4) img  {
 	animation: ready 2s infinite alternate;
 	animation-delay: 0.5s;
 }
@@ -140,15 +140,26 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 40%;
+	height: 45%;
 }
 
 #arena div {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 50%;
-	height: 100%;
+	width: 33.3333%;
+}
+
+#user-message {
+	padding: 0px 0px 20px;
+	font-size: 20px;
+}
+
+#middle-screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 #arena .character-box {
@@ -201,7 +212,7 @@ button {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	width: 100%;
+	width: 0%;
 	background: red;
 }
 

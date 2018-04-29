@@ -18,7 +18,7 @@ function gameCharacter(name, hP, aP, cA, gImg) {
 }
 
 //Create new characters 
-var charmander = new gameCharacter("Charmander", 40, 6, 25, "assets/images/charmander.png", false);
+var charmander = new gameCharacter("Charmander", 100, 6, 15, "assets/images/charmander.png", false);
 var bellsprout = new gameCharacter("Bellsprout", 120, 2, 30, "assets/images/bellsprout.png", false);
 var bullbasaur = new gameCharacter("Bullbasaur", 180, 4, 25, "assets/images/bullbasaur.png");
 var jigglypuff = new gameCharacter("Jigglypuff", 150, 5, 40, "assets/images/jigglypuff.png", false);
@@ -83,6 +83,8 @@ $("#enemy-area").on("click", ".character-box", function() {
 		myEnemyImage.appendTo("#enemy-fighting-area");
 		$("#user-message").text("Start attacking!")
 		enemyNewHP = enemy.healthPoints;
+		//Reset health bar to 100%
+		$("#enemy-health").css("width", "100%");
 	} else {
 		$("#user-message").text("You can only fight one enemy at once!")
 	}
