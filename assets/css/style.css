@@ -297,7 +297,30 @@ button:hover {
 	}
 }
 
+/*Lose Screen*/
+
+.lose-screen {
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	flex-direction: column;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(to bottom, #40405c 0%,#6f71aa 80%,#8a76ab 100%)
+}
+
 .show {
 	display: flex;
+}
+
+#character-lose {
+	transform: scale(2);
+	padding: 55px;
 }
 

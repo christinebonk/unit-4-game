@@ -55,9 +55,15 @@
 			<h2>Your Enemies</h2>
 		</div>
 	</main>
+	<!--Win Screen-->
 	<section class="win-screen">
 		<h2>You Win!</h2>
 		<div id="character-win"></div>
+	</section>
+	<!--Lose Screen-->
+	<section class="lose-screen">
+		<h2>You Lose...</h2>
+		<div id="character-lose"></div>
 	</section>
 	<!--Audio Controls-->
 	<audio class="starting-screen" autoplay loop> 
@@ -68,6 +74,9 @@
 	</audio>
 	<audio class="victory-screen" loop> 
 	   <source src="assets/sound/victory.mp3" type="audio/mpeg">
+	</audio>
+	<audio class="end-screen" loop> 
+	   <source src="assets/sound/end.mp3" type="audio/mpeg">
 	</audio>
 	<script src="assets/javascript/game.js"></script>
 </body>

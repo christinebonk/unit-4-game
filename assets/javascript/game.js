@@ -163,6 +163,14 @@ $("#attack").on("click", "button", function() {
 		$("#health").text("");
 		fighter = "";
 		newAP = "";
+		//pause starting music
+		$(".battle-screen").trigger("pause");
+		//start battle music
+		$(".end-screen").trigger("play");
+		//move fighter to win screen
+		myFighter.appendTo("#character-lose");
+		 //show win screen 
+		 $(".lose-screen").addClass("show");
 	}
 });
 
