@@ -169,4 +169,3 @@ $("#attack").on("click", "button", function() {
 	}
 });
 
-//Restart game
