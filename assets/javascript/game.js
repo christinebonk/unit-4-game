@@ -19,10 +19,10 @@ function gameCharacter(name, hP, aP, cA, gImg) {
 }
 
 //Create new characters 
-var charmander = new gameCharacter("Charmander", 100, 15, 10, "assets/images/charmander.png", false);
-var bellsprout = new gameCharacter("Bellsprout", 120, 13, 15, "assets/images/bellsprout.png", false);
-var bullbasaur = new gameCharacter("Bullbasaur", 200, 5, 30, "assets/images/bullbasaur.png");
-var jigglypuff = new gameCharacter("Jigglypuff", 150, 10, 25, "assets/images/jigglypuff.png", false);
+var charmander = new gameCharacter("Charmander", 110, 15, 5, "assets/images/charmander.png", false);
+var bellsprout = new gameCharacter("Bellsprout", 120, 10, 8, "assets/images/bellsprout.png", false);
+var bullbasaur = new gameCharacter("Bullbasaur", 160, 3, 18, "assets/images/bullbasaur.png");
+var jigglypuff = new gameCharacter("Jigglypuff", 140, 7, 15, "assets/images/jigglypuff.png", false);
 //Add new characters to array 
 var availableCharacters = [charmander, bellsprout, bullbasaur, jigglypuff];
 
