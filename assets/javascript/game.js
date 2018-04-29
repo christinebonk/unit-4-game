@@ -158,19 +158,14 @@ $("#attack").on("click", "button", function() {
 	} 
 	if (newHP <= 0) {
 	//Player loses if health drops below zero
-		$("#user-message").text("You lose");
-		$("#fighting-area").empty();
-		$("#health").text("");
-		fighter = "";
-		newAP = "";
 		//pause starting music
 		$(".battle-screen").trigger("pause");
 		//start battle music
 		$(".end-screen").trigger("play");
-		//move fighter to win screen
+		//move fighter to lose screen
 		myFighter.appendTo("#character-lose");
-		 //show win screen 
-		 $(".lose-screen").addClass("show");
+		//show lose screen 
+		$(".lose-screen").addClass("show");
 	}
 });
 

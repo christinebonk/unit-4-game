@@ -2,26 +2,29 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<!--Viewport tag-->
+	<meta name="viewport" content="width=device-width">
+	<!--Favicon-->
 	<link rel="icon" type="image/x-icon" href="assets/images/jigglypuff.png">
-	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
-	<script src="https://use.fontawesome.com/28924c9cd2.js"></script>
+	<!--Google Fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Bungee|Press+Start+2P" rel="stylesheet">
+	<!--Reset Stylesheet-->
 	<link rel="stylesheet" href="assets/css/reset.css">
+	<!--My StyleSheet-->
 	<link rel="stylesheet" href="assets/css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<title>Pokebattle</title>
+	<title>Pokemon Battle</title>
 </head>
 <body>
-
 	<!--Starting Screen-->
 	<section id="starting-screen">
 		<h1>Pokemon Battle</h1>
+		<!--Waiting Area-->
 		<div id="waiting-area">
 		</div>
 		<h2>Select a Character to get Started</h2>
 	</section>
+	<!--Main Section Begins-->
 	<main id="gameplay-screen">
-	
 		<!--Player Health-->
 		<figure class="outline">
 			<figure id="health" class="health">
@@ -36,15 +39,18 @@
 		</figure>
 		<!--Arena-->
 		<div id="arena">
+			<!--Your Fighter-->
 			<div id="fighter">
 				<div id="fighting-area"></div>	
 			</div>
 			<div id="middle-screen">
+				<!--User Message-->
 				<h2 id="user-message">Choose an enemy!</h2>
 				<div id="attack">
 					<button><p>Attack</p></button>
 				</div>
 			</div>
+			<!--Your Enemy-->
 			<div id="enemy">
 				<div id="enemy-fighting-area"></div>	
 			</div>
@@ -78,6 +84,9 @@
 	<audio class="end-screen" loop> 
 	   <source src="assets/sound/end.mp3" type="audio/mpeg">
 	</audio>
+	<!--JQuery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!--MY JS-->
 	<script src="assets/javascript/game.js"></script>
 </body>
 </html>
